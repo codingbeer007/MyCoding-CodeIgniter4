@@ -1,0 +1,19 @@
+##Views
+    <?php
+        //PHP code for processing JSON input
+            $headers=getallheaders();
+            $member_token=$headers['X-CSRF-Token'] ?? $Data_record_grades_process["course_teacher"] ?? "";
+            $csrf_token_sessin=$Dataoffice->get("csrf_token");
+                if((!isset($csrf_token_sessin) || $member_token !==$csrf_token_sessin)){
+                    // Token ไม่ถูกต้อง
+                    // http_response_code(403);
+                    echo "A";
+                }else{
+                    // Token ถูกต้อง
+                    echo "B";
+                    // ลบ token หลังตรวจสอบแล้ว
+                    $Dataoffice->remove("csrf_token"); // สมมติว่ามี method remove
+                    // หรือถ้าเก็บใน session โดยตรง:
+                    // unset($_SESSION['csrf_token']);
+                }
+    ?>
