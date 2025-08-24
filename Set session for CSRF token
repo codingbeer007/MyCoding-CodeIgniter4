@@ -1,0 +1,15 @@
+###Views
+    <?php
+    // Set session for CSRF token
+        if(($Dataoffice->has("member_id")>=1)){
+            $member_id=$Dataoffice->get("member_id") ?? null;
+
+            $member_token=bin2hex(random_bytes(32));
+            $Dataoffice->set("csrf_token",$member_token);
+
+        }else{
+            $member_id=null;
+            $member_token=null;
+        } 
+    ?>
+
