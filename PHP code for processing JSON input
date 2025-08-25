@@ -19,6 +19,4 @@
                     // หรือถ้าเก็บใน session โดยตรง:
                     // unset($_SESSION['csrf_token']);
                 }
-
-
     ?>
